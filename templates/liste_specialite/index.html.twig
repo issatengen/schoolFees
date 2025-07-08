@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste spécialités{% endblock %}
+
+{% block body %}
+
+<div class="container example-wrapper">
+    <div class="bg-white">
+        <div class="row">
+            <div class="col-md-8 mt-4">
+                <h6 class="h3 text-primary-emphasis">
+                    List of specialities
+                </h6>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('app_specialite') }}">
+                    <button class="btn btn-success m-4">
+                        <i class="bi bi-plus-circle-dotted"></i>
+                        <span>Create new</span>
+                    </button>
+                </a>
+                <a href="{{ path('app_liste_etudiant') }}">
+                    <button class="btn btn-primary m-4">
+                        <i class="bi bi-arrow-left-circle"></i>
+                        <span>Retour</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="bg-danger text-center text-light pt-3">
+        </div>
+        <div class="bg-danger text-center">
+            {% if specialites is empty %}
+                <h2>Aucune spécialité enregistrée !! 😑😑</h2>
+            {% else %}
+        </div>
+        <div class="rounded-4">
+            <div class="p-4 bg-light mb-2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Label</th>
+                            <th>Description</th>
+                            <th>Fees</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for specialite in specialites %}
+                        <tr>
+                            <td>
+                                {{ specialite.codeSpecialite }}
+                            </td>
+                            <td>
+                                {{ specialite.libelleSpecialite }}
+                            </td>
+                            <td>
+                                {{ specialite.Description }}
+                            </td>
+                            <td>
+                                {{ specialite.Fee }} FCFA
+                            </td>
+                            <td>
+                                <form method="post" action="{{ path('app_supprimer_specialite', {'id' :specialite.id}) }}" onclick="return confirm('Voulez-vous vraiment supprimer cette specialité ?')">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete'~specialite.id) }}">
+                                    <button class="btn btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                                <a href="{{ path('app_modifier_specialite',{'id' :specialite.id}) }}">
+                                    <button class="btn btn-primary">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

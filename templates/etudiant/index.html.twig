@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un etudiant{% endblock %}
+
+{% block body %}
+
+    <div class="container bg-white">
+        <div class="row">
+            <div class="col-md-8 mt-4">
+                <h6 class="h3 text-primary-emphasis">
+                    Add a new student
+                </h6>
+                Student
+                <span class="text-primary-emphasis h4">N<sup>o</sup> {{ nbreEtudiant+1 }}
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('app_specialite') }}">
+                    <button class="btn btn-success m-4">
+                        <i class="bi bi-plus-circle-dotted"></i>
+                        <span>Create new</span>
+                    </button>
+                </a>
+                <a href="{{ path('app_liste_etudiant') }}">
+                    <button class="btn btn-primary m-4">
+                        <i class="bi bi-arrow-left-circle"></i>
+                        <span>Retour</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="bg-danger text-center text-light pt-3">
+        </div>
+        <div class="row rounded-4">
+            <div class="col-md-2 bg-light mb-2">
+            </div>
+            <div class="col-md-8 bg-light mb-2">
+                {{ form_start(form_etudiant) }}
+                {{ form_widget(form_etudiant) }}
+                {{ form_end(form_etudiant) }}
+            </div>
+            <div class="col-md-2 bg-light mb-2">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

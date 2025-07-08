@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UtilisateurController!{% endblock %}
+
+{% block body %}
+    <div class="bg-white">
+        <div class="pt-4 pb-4 col-12 bg-warning text-center">
+            <h2 class="1 text-white">
+                Ajouter l'utilisateur N<sup>o</sup>
+                {{ nbUser+1 }}
+            </h2>
+        </div>
+        <div class="row rounded-4">
+            <div class="col-md-4 text-center mt-5 pt-4 bg-tertiary">
+                <h3>Ajouter un utilisateur</h3>
+                <div class="text-center mb-2">
+                    Ajouter un nouveau utilisateur sur notre première platforme conçu avec <b>Symfony</b>
+                </div>
+            </div>
+            <div class="col-md-8 p-4 bg-light mb-2">
+                {{ form_start(form_utilisateur) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="font-weight-bold"><b>Code Utilisateur</b></label>
+                        {{ form_widget(form_utilisateur.codeUtilisateur,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="font-weight-bold"><b>Nom Utilisateur</b></label>
+                        {{ form_widget(form_utilisateur.nomUtilisateur,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="font-weight-bold"><b>Prenom Utilisateur</b></label>
+                        {{ form_widget(form_utilisateur.prenomUtilisateur,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="font-weight-bold"><b>Email Utilisateur</b></label>
+                        {{ form_widget(form_utilisateur.EmailUtilisateur,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="font-weight-bold"><b>Adresse Utilisateur</b></label>
+                        {{ form_widget(form_utilisateur.adresseUtilisateur,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="font-weight-bold"><b>Telephone</b></label>
+                        {{ form_widget(form_utilisateur.telephoneUtilisateur,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-5">
+                        <label class="font-weight-bold"><b>Mot de passe</b></label>
+                        {{ form_widget(form_utilisateur.passwordUtilisateur,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-5">
+                        <label class="font-weight-bold "><b>Role</b></label>
+                        {{ form_widget(form_utilisateur.id,{'attr': {'class': 'form-select'}}) }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-3">
+                    <i class="bi bi-database"></i>
+                    Enregistrer
+                </button>
+                {{ form_end(form_utilisateur) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

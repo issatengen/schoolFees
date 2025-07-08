@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+{% block title %}Impayés{% endblock %}
+
+{% block body %}
+<div class="container example-wrapper">
+    <div class="bg-white">
+        <div class="row">
+            <div class="col-md-8 mt-4">
+                <h6 class="h3 text-dark">
+                    List of uncompleted payments
+                </h6>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('app_payment_new') }}">
+                    <button class="btn btn-success m-4">
+                        <i class="bi bi-plus-circle-dotted"></i>
+                        <span>Ajouter</span>
+                    </button>
+                </a>
+                <a href="{{ path('app_liste_etudiant') }}">
+                    <button class="btn btn-primary m-4">
+                        <i class="bi bi-arrow-left-circle"></i>
+                        <span>Retour</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="bg-danger text-center">
+            {% if etudiants is empty %}
+                <h2>Aucun paiement trouvé !! 😑😑</h2>
+            {% else %}
+        </div>
+        <div class="bg-danger text-center text-light pt-3">
+        </div>
+        <div class="rounded-4">
+            <div class="p-4 bg-light mb-2">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Matricule</th>
+                            <th>Name</th>
+                            <th>Speciality</th>
+                            <th>Montant paid</th>
+                            <th>Remaining</th>
+                            <th>Total fees</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for etudiant in etudiants %}
+                        <tr>
+                            <td>
+                                {{ etudiant.matricule_etudiant }}
+                            </td>
+                            <td>
+                                {{ etudiant.nom_etudiant ~ ' ' ~ etudiant.prenom_etudiant }}
+                            </td>
+                            <td>
+                                {{ etudiant.libelle_specialite }}
+                            </td>
+                            <td>
+                                {{ etudiant.total_paye|default(0) }} FCFA
+                            </td>
+                            <td>
+                                <b>{{ etudiant.fee - etudiant.total_paye }} FCFA</b>
+                            </td>
+                            <td>
+                                {{ etudiant.fee }} FCFA
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

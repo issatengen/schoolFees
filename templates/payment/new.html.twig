@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Payment{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-4">
+            <h6 class="h3 text-primary-emphasis">
+                Create payment            
+            </h6>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ path('app_payment_index') }}">
+                <button class="btn btn-success mt-4">
+                    <i class="bi bi-plus-circle-dotted"></i>
+                    <span>List payments</span>
+                </button>
+            </a>
+            <a href="{{ path('app_liste_etudiant') }}">
+                <button class="btn btn-primary mt-4">
+                    <i class="bi bi-arrow-left-circle"></i>
+                    <span>Students list</span>
+                </button>
+            </a>
+        </div>
+    </div>
+    {{ include('payment/_form.html.twig') }}
+</div>
+{% endblock %}

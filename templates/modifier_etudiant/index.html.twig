@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'étudiant {% endblock %}
+
+{% block body %}
+<style>
+    .modifierEtudiant { background-image: url("https://www.the20.com/wp-content/uploads/2018/12/computer-at-night.jpg");background-repeat: no-repeat;background-size: cover;height: auto}
+</style>
+
+<div class="">
+    <div class="modifierEtudiant pb-5 pt-3">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h3 class="h1 text-white">
+                    {{ etudiant.nomEtudiant ~' '~ etudiant.prenomEtudiant }}
+                </h3>
+            </div>
+            <div class="col-md-12 text-light">
+                Welcome to <br>
+                <span class="text-primary h1">LogixTrain</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row bg-white">
+        <div class="col-md-4 text-center mt-5 pt-5">
+            <h3>Ajouter un etudiant</h3>
+            <div class="text-center mb-2">
+                Ajouter un nouveau etudiant sur notre première platforme conçu avec <b>Symfony</b>
+            </div>
+        </div>
+        <div class="col-md-6 bg-light mb-3 rounded-4 p-3">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

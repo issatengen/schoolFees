@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un role{% endblock %}
+
+{% block body %}
+
+    <div class="bg-white">
+        <div class="pt-4 pb-4 col-12 bg-warning text-center">
+            <h2 class="1 text-white">
+                Ajouter un rôle
+            </h2>
+        </div>
+        <div class="row rounded-4">
+            <div class="col-md-3 text-center mt-5 pt-4 bg-tertiary">
+                <h3>Ajouter un rôle</h3>
+                <div class="text-center mb-2">
+                    Ajouter un nouveau role sur notre première platforme conçu avec <b>Symfony</b>
+                </div>
+            </div>
+            {% if allRoles is empty %}
+            <h3>Aucun role enregistrer</h3>
+            {% else %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Libelle</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for role in allRoles %}
+                <tr>
+                    <td>{{ role.code_role }}</td>
+                    <td>{{ role.libelle_role }}</td>
+                    <td>
+                        <a href="{{ path('app_deleteRole', {'id': allRole.idRole }) }}" onclick="return confirm('Voulez-vous vraiment supprimer ce role ?')">
+                            <button>
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

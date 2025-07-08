@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SpecialiteController!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <div class="bg-white">
+        <div class="pt-4 pb-4 col-12 bg-warning text-center">
+            <h2 class="1 text-white">
+                Ajouter une spécialité
+            </h2>
+        </div>
+        <div class="row rounded-4">
+            <div class="col-md-3 text-center mt-5 pt-4 bg-tertiary">
+                <h3>Ajouter une spécialité</h3>
+                <div class="text-center mb-2">
+                    Ajouter une nouvelle spécialité sur notre première platforme conçu avec <b>Symfony</b>
+                </div>
+            </div>
+            <div class="col-md-7 p-4 bg-light mb-2">
+                {{ form_start(form_specialite) }}
+                {{ form_widget(form_specialite) }}
+                {{ form_end(form_specialite) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
